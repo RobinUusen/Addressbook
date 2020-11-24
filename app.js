@@ -1,11 +1,11 @@
 // define variables
 // contact data
-const firstName = document.querySelector('#first_name');
-const lastName = document.querySelector('#last_name');
-const city = document.querySelector('#city');
-const street = document.querySelector('#street');
-const postCode = document.querySelector('#postcode');
-const phone = document.querySelector('#phone');
+const firstName = document.querySelector('#first_name').value;
+const lastName = document.querySelector('#last_name').value;
+const city = document.querySelector('#city').value;
+const street = document.querySelector('#street').value;
+const postCode = document.querySelector('#postcode').value;
+const phone = document.querySelector('#phone').value;
 const contact = [firstName, lastName, city, street, postCode, phone];
 
 // app data
@@ -19,7 +19,7 @@ form.addEventListener('submit', addContact);
 // project functions
 // addContact
 function addContact(e) {
-    if (firstName.value === '') {
+    if (firstName == '' | lastName == '' | city == '' | street == '' | postCode == '' | phone == '') {
         alert("Add new contact data!")
     } else {
         console.log("Create contact");
