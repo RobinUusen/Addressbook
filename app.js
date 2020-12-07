@@ -3,6 +3,7 @@
 // app data html elements
 const form = document.querySelector('#contact-form');
 const contacts = document.querySelector('#contacts-table');
+const clearBtn = document.querySelector('#clear-contacts');
 
 // define event listeners
 // page reload event - get data from Local Storage
@@ -11,6 +12,8 @@ document.addEventListener('DOMContentLoaded', getContacts);
 form.addEventListener('submit', addContact);
 // delete contact from table - link click
 contacts.addEventListener('click', deleteContact);
+// clear all contacts from table
+clearBtn.addEventListener('click', clearContacts);
 
 
 // project functions
@@ -90,4 +93,23 @@ function getContacts() {
         // create UI object for html table row
         ui.addPersonToTable(personData);
     });
+}
+
+// clearContacts
+function clearContacts(e) {
+    // create new ui object
+    const ui = new UI();
+    // clear contacts from UI
+    ui.clearContacts();
+    // create new Local Storage object
+    const ls = new LS();
+    // clear contacts from LS
+    const isCleared = ls.clearContacts();
+    if (isCleared) {
+        // add alert about it
+        ui.alertMessage("Contacts are cleared", "ok");
+    } else {
+        ui.alertMessage("Some problems, sorry", "problem");
+    }
+
 }
